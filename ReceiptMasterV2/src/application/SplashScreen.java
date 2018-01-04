@@ -72,9 +72,9 @@ import javafx.scene.paint.Color;
 import javafx.stage.*;
 import javafx.util.Duration;
 import model.SMSBacklog;
-import net.sourceforge.barbecue.Barcode;
-import net.sourceforge.barbecue.BarcodeFactory;
-import net.sourceforge.barbecue.BarcodeImageHandler;
+//import net.sourceforge.barbecue.Barcode;
+//import net.sourceforge.barbecue.BarcodeFactory;
+//import net.sourceforge.barbecue.BarcodeImageHandler;
 import util.DBUtil;
 
 /**
