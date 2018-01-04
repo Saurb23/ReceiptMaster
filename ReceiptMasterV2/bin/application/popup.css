@@ -1,0 +1,57 @@
+
+.jfx-button{
+	-fx-text-fill:white;
+	-fx-font-size:12;
+	-fx-border-color:black; 
+	-fx-border-radius:10;
+	-fx-border-color:#000d1a;
+	-fx-background-radius:15;
+	-fx-background-color:#214682;
+	-fx-font-weight:bold;
+}
+
+.jfx-text-field{
+	-fx-font-size:19;
+	
+}
+
+.jfx-text-field:focussed{
+	-fx-background-color:black;
+}
+
+.grid{
+	-fx-background-color: rgb(255, 255, 255);
+	-fx-background-radius: 15;
+	-fx-effect: dropshadow(gaussian, #214682, 50, 0, 0, 0);
+	-fx-background-insets: 50;
+}
+
+.jfx-combo-box{
+	-fx-font-size:15;
+}
+
+.label{
+	-fx-text-fill: black;
+	-fx-font-size: 16;
+	-fx-font-weight:bold;
+}
+.error-label{
+	-fx-text-fill: #ff6666;
+	-fx-font-size: 16;
+	-fx-font-weight:bold;
+}
+
+
+.del-btn{
+	-fx-background-color:red;
+	-fx-border-color:black; 
+	-fx-border-radius:5;
+	-fx-background-radius:10;
+}
+
+.tooltip{
+	-fx-font-size:14;
+	-fx-background-color: #ff6666;
+	-fx-text-fill:white;
+	
+}

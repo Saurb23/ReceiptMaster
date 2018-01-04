@@ -1,0 +1,100 @@
+.root{
+	-fx-background-color: #e6e6e6  ;
+}
+
+/* .vbox{
+	-fx-background-color: red ;
+}
+*
+*/
+
+.accordion > .titled-pane{
+	-fx-padding: 0 0 0.5em 0;
+}
+.titled-pane > .title{
+  -fx-padding: 0 0 0 -25;
+	-fx-font-size: 20;
+	-fx-background-color: #000d1a;
+}
+
+.label{
+	-fx-text-fill : white;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+}
+.jfxBtn{
+	-fx-font-size: 16;
+	-fx-border-color:blue;
+	-fx-text-fill:black;
+	-fx-cursor: hand;
+
+}
+.jfxBtn:hover{
+	-fx-background-color: red;
+	-fx-cursor: hand;
+
+}
+ .jfx-button{
+	-fx-text-fill:white;
+	-fx-font-size:12;
+	-fx-border-color:black;
+	-fx-border-radius:10;
+	-fx-border-color:#000d1a;
+	-fx-background-radius:15;
+	-fx-background-color:#214682;
+
+}
+
+
+
+.del-btn{
+	-fx-background-color:red;
+	-fx-border-color:black;
+	-fx-border-radius:5;
+	-fx-background-radius:10;
+
+}
+
+
+/* .table-row-cell:last-row {
+    -fx-background: #707070 ;
+    -fx-text-fill:black;
+    -fx-font-size:20;
+    -fx-font-weight:bold;
+}
+
+.table-row-cell:last-second-row{
+	-fx-background: #707070;
+    -fx-text-fill:black;
+    -fx-alignment:center-right ;
+    -fx-font-size:20;
+    -fx-font-weight:bold;
+}
+*/
+
+
+.table-row-cell:selected {
+	-fx-background-color:#214682;
+	-fx-text-fill:white;
+}
+.table-view .table-cell{
+    -fx-font-weight:bold;
+    -fx-font-size:14px;
+
+
+    }
+
+.tooltip{
+	-fx-font-size:14;
+	-fx-background-color: #ff6666;
+	-fx-text-fill:white;
+
+}
+/*
+.table-row-cell:last-cell{
+	-fx-text-fill:blue;
+}*/
+

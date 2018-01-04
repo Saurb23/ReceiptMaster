@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="StockReport" pageWidth="1158" pageHeight="842" columnWidth="1118" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue()%2==0)]]></conditionExpression>
+			<style backcolor="#EFF7FF"/>
+		</conditionalStyle>
+	</style>
+	<subDataset name="StockData1">
+		<parameter name="FROMDATE" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="TODATE" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[select distinct p.productname,p.quantity,p.id,
+(select IFNULL((select CAST(SUM(return_quantity) as SIGNED)  from rm_purchase_return where purchase_product_items_id=p.id AND date_created>=$P{FROMDATE} AND date_created<=$P{TODATE}),0)) as purchaseReturn1,
+
+(select  IFNULL((select CAST( sum(pp.quantity)as SIGNED) from rm_purchase_product pp where pp.product_id=p.id),0)) as totalQty,
+
+(select IFNULL((select CAST(sum(sp.quantity)as SIGNED) from rm_sales_product sp where sp.product_id=p.id),0)) as saleQty,
+
+(select  IFNULL((select CAST(sum(fp.quantity) as SIGNED) from rm_finishedproducts fp where fp.productid=p.id),0)) as stockQty,
+
+(select IFNULL ((select CAST(sum(tp.quantity) as SIGNED) from transfer_stock_product tp where tp.productid=p.id),0)) as transferQty,
+
+
+(select IFNULL((select CAST(SUM(return_quantity) as SIGNED) from rm_sales_return where sales_product_items_id=p.id  AND date_created>=$P{FROMDATE} AND date_created<=$P{TODATE}),0)) as salesReturn1
+from rm_product p]]>
+		</queryString>
+		<field name="productname" class="java.lang.String"/>
+		<field name="quantity" class="java.lang.Long"/>
+		<field name="id" class="java.lang.Long"/>
+		<field name="purchaseReturn1" class="java.lang.Long"/>
+		<field name="totalQty" class="java.lang.Long"/>
+		<field name="saleQty" class="java.lang.Long"/>
+		<field name="stockQty" class="java.lang.Long"/>
+		<field name="transferQty" class="java.lang.Long"/>
+		<field name="salesReturn1" class="java.lang.Long"/>
+		<variable name="variable11" class="java.math.BigDecimal">
+			<variableExpression><![CDATA[$F{quantity}]]></variableExpression>
+		</variable>
+		<variable name="pur" class="java.lang.Long">
+			<variableExpression><![CDATA[$F{purchaseReturn1}]]></variableExpression>
+		</variable>
+		<variable name="sales" class="java.lang.Long">
+			<variableExpression><![CDATA[$F{salesReturn1}]]></variableExpression>
+		</variable>
+	</subDataset>
+	<parameter name="FromDate" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ToDate" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString language="SQL">
+		<![CDATA[select 1]]>
+	</queryString>
+	<field name="1" class="java.lang.Long"/>
+	<variable name="variable1" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<detail>
+		<band height="51" splitType="Stretch">
+			<componentElement>
+				<reportElement key="table" style="table" x="0" y="1" width="360" height="50"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="StockData1">
+						<datasetParameter name="FROMDATE">
+							<datasetParameterExpression><![CDATA[$P{FromDate}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="TODATE">
+							<datasetParameterExpression><![CDATA[$P{ToDate}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="151">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="150" height="30"/>
+								<textElement textAlignment="Center">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[PRODUCT NAME]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="31" rowSpan="1">
+							<textField>
+								<reportElement x="1" y="1" width="150" height="30"/>
+								<box topPadding="3"/>
+								<textElement textAlignment="Center"/>
+								<textFieldExpression><![CDATA[$F{productname}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="151">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="150" height="30"/>
+								<textElement textAlignment="Center">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[TOTAL QUANTITY]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="31" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="150" height="31"/>
+								<box topPadding="3"/>
+								<textElement textAlignment="Center"/>
+								<textFieldExpression><![CDATA[$F{totalQty}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="135">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="135" height="30"/>
+								<textElement textAlignment="Center">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[SALES QUANTITY]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="31" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="1" width="135" height="30"/>
+								<box topPadding="3">
+									<pen lineWidth="0.5"/>
+									<topPen lineWidth="0.0"/>
+									<leftPen lineWidth="0.0"/>
+									<bottomPen lineWidth="0.0"/>
+									<rightPen lineWidth="0.0"/>
+								</box>
+								<textElement textAlignment="Center"/>
+								<textFieldExpression><![CDATA[$F{saleQty}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="122">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="122" height="30"/>
+								<textElement textAlignment="Center">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[ADDED STOCK]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="31" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="122" height="31"/>
+								<box topPadding="3"/>
+								<textElement textAlignment="Center"/>
+								<textFieldExpression><![CDATA[$F{stockQty}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="121">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="121" height="30"/>
+								<textElement textAlignment="Center">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[TRANSFER STOCK]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="31" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="121" height="31"/>
+								<box topPadding="3"/>
+								<textElement textAlignment="Center"/>
+								<textFieldExpression><![CDATA[$F{transferQty}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="151">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="150" height="30"/>
+								<textElement textAlignment="Center">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[PURCHASE RETURN QUANTITY]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="31" rowSpan="1">
+							<textField>
+								<reportElement x="1" y="1" width="150" height="30"/>
+								<box topPadding="3"/>
+								<textElement textAlignment="Center"/>
+								<textFieldExpression><![CDATA[$F{purchaseReturn1}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="151">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="150" height="30"/>
+								<textElement textAlignment="Center">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[SALES RETURN QUANTITY]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="31" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="151" height="31"/>
+								<box topPadding="3"/>
+								<textElement textAlignment="Center"/>
+								<textFieldExpression><![CDATA[$F{salesReturn1}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="151">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="150" height="30"/>
+								<textElement textAlignment="Center">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[REMAINING QUANTITY]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="31" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="150" height="31"/>
+								<box topPadding="3"/>
+								<textElement textAlignment="Center"/>
+								<textFieldExpression><![CDATA[$F{quantity}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</detail>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

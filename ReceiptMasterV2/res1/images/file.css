@@ -1,0 +1,19 @@
+.error-label {
+	-fx-text-fill:red;
+}
+
+.button{
+	-fx-text-fill:#66ffcc;
+	-fx-font-size:16;
+	-fx-border-color:#66ffcc; 
+	-fx-border-radius:10;
+}
+.button:hover{
+    -fx-font-size:16;
+    -fx-text-fill: #000d1a;
+    -fx-border-radius:10;
+   	-fx-border-color:#000d1a;
+   	-fx-background-color: #66ffcc;
+   	-fx-background-radius:15;
+   	-fx-cursor: hand;
+}

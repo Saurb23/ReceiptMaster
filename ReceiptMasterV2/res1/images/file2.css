@@ -1,0 +1,131 @@
+.root{
+	-fx-background-color: #e6e6e6  ;
+}
+
+
+
+/* .vbox{
+	-fx-background-color: red ;
+}
+*
+*/
+.accordion > .titled-pane{
+	-fx-padding: 0 0 1.5em 0.5em;
+}
+
+.date-picker-popup .label{
+	-fx-text-fill:  black;
+}
+.date-picker-popup .calendar-grid {
+    -fx-pref-width: 220.0;
+    -fx-pref-height: 180.0;
+}
+.date-picker-popup .spinner-label {
+    -fx-font-size: 14.0;
+}
+
+.titled-pane > .title{
+  -fx-padding: 0 0 0 -25;
+	-fx-font-size: 20;
+	-fx-background-color: #000d1a;
+}
+.label{
+	-fx-text-fill : white;
+}
+.table-view .column-header .label {
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+    -fx-font-size:16;
+}
+ .jfx-button{
+	-fx-text-fill:white;
+	-fx-font-size:12;
+	-fx-border-color:black;
+	-fx-border-radius:10;
+	-fx-border-color:#000d1a;
+	-fx-background-radius:15;
+	-fx-background-color:#214682;
+}
+.del-btn{
+	-fx-background-color:red;
+	-fx-border-color:black;
+	-fx-border-radius:5;
+	-fx-background-radius:10;
+}
+.jfxBtn{
+	-fx-font-size: 16;
+	-fx-border-color:transparent;
+	-fx-text-fill:black;
+	-fx-background-color:transparent;
+}
+.jfxBtn:hover{
+	-fx-background-color:#e0e0eb;
+	-fx-cursor:hand;
+}
+ .jfxBtn:focused{
+	-fx-background-color: #b1b1cd;
+
+}
+.short-btn{
+	-fx-font-size:20;
+	-fx-font-weight:bold;
+	-fx-cursor:hand;
+}
+.table-row-cell:last-row {
+    -fx-background: #707070 ;
+    -fx-text-fill:black;
+    -fx-font-size:15;
+    -fx-font-weight:bold;
+}
+.table-row-cell:selected {
+	-fx-background-color:#214682;
+	-fx-text-fill:white;
+	-fx-font-weight:bold;
+}
+.table-view .table-cell{
+    -fx-font-size:14px;
+    }
+.tooltip{
+	-fx-font-size:14;
+	-fx-background-color: #ff6666;
+	-fx-text-fill:white;
+}
+
+/* 
+.menu-button, .menu-button .menu-item, .menu-button .context-menu {
+    -fx-background-color: #28559c;  
+}
+.menu-button .menu-item:hover {
+    -fx-background-color: #3b6bb7 ;
+}
+.menu-button .menu-item .label {
+    -fx-text-fill: white ;
+}*/
+/* 
+.menu-button > .arrow-button {
+	-fx-background-color: transparent;
+	-fx-background-color: white, #28559c ;
+    -fx-background-insets: 1, 3 ;
+    -fx-background-radius: 16, 16 ;
+    -fx-padding: 8 ;
+    
+
+}*/
+
+/*
+.menu-button > .arrow-button > .arrow {
+   -fx-background-color: white;
+    -fx-background-insets: 0, 2 ;
+    -fx-background-radius: 12, 12 ;
+    -fx-padding: 8 ; 
+    -fx-shape: "M 0 -3.5 v 7 l 4 -3.5 z";
+    -fx-shape: "M0 6 l-6 -6 l0 -2 l6 -6 l2 0 l-6 6 l12 0 l0 2 l-12 0 l6 6 z";
+     
+
+}*/
+
+/*.table-row-cell:last-cell{
+	-fx-text-fill:blue;
+}
+* 
+*/
