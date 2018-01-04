@@ -12,7 +12,7 @@ public class BarcodeProduct {
 
 	public static List<Item> generateBarcodeProduct(List<Product> prodList) {
 		List<String> sqlStmt=new ArrayList<>();
-		System.out.println("rahul");
+		System.out.println("rahul1");
 		List<Item> itemList= new ArrayList<>();
 		for(Product p:prodList) {
 			for(int i=0;i<p.getQuantity();i++) {
