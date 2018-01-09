@@ -30,7 +30,7 @@ public class BarcodeGenerator {
 	public static String generateBarcode(Product product) {
 //	String str = "DEFGHI";
 	String barEncrypt="";   
-System.out.println("Rahul Change hereeerer11");
+System.out.println("Rahul Change hereeerer11111111111111111111111");
 //    Barcode barcode=null;
 //	try {
 //		String productData=product.getProduct_name()+""+product.getUnit()+""+product.getHsnNo()+""+product.getSellPrice()+""+product.getCategory()+""+product.getSubGroup();
