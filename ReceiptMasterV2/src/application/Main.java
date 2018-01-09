@@ -376,7 +376,7 @@ public class Main extends Application  {
 		// );
 		// imageView.setFitHeight(300);
 		// imageView.setFitWidth(228);
-		System.out.println("HI");
+		System.out.println("Changess");
 		Main.primaryStage=primaryStage;
 		AnchorPane hamAnchor = new AnchorPane();
 //		BarCodeRead.generateBarCode();
